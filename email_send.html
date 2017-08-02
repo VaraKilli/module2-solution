@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>NetPay - Email Send Documentation</title>
+        <!-- Custom CSS files -->
+        <link href="resource\bootstrap.css" rel="stylesheet">
+        <link href="resource\bootstrap-theme.min.css" rel="stylesheet">
+        <link href="resource\email_style.css" rel="stylesheet">
+    </head>
+    <body>
+        <script src="resource\jquery-1.10.2.min.js" type="text/javascript"></script>
+        <script src="resource\email.js" type="text/javascript"></script>
+        <script src="resource\bootstrap.js" type="text/javascript"></script>
+        <header id="main-header" class="container-fluid">
+    <div class="row-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a id="main-logo" title="Netpay Home" href="/">
+                        <img alt="Netpay Logo" src="resource\netpay_logo.png" />
+                    </a>
+                </div>
+                <div id="header-links" class="col-md-6">
+                    <a title="Netpay Home" href="http://www.netpay.co.uk">
+                        NetPay Home                        
+                    </a>
+                    <h1>
+                        Developer Centre                       
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div id="content" class="container">
+            <div class="tab-content">
+                <div class="tab-pane active" id="transaction">
+                    <div class="panel-group" id="accordion">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading ac-header">
+                                <span class="accordion-before">POST</span>
+                                <h4 class="panel-title">
+                                    Email Send
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#email_send_request" data-toggle="tab">Request</a></li>
+                                        <li><a href="#email_send_response" data-toggle="tab">Response</a></li>
+                                        <li><a href="#email_send_error_response" data-toggle="tab">Error Response</a></li>
+                                        <li><a href="#email_send_sample" data-toggle="tab">Sample</a></li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="email_send_request">
+                                            <div class="panel panel-default table-outer">
+                                                <div class="panel-heading">
+                                                    <h4>Request Fields</h4>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-condensed table-colls-4 ">
+                                                        <thead>
+                                                            <tr>
+                                                                <td><strong>Parameter</strong></td>
+                                                                <td><strong>Requirement</strong></td>
+                                                                <td><strong>Length</strong></td>
+                                                                <td><strong>Description</strong></td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="success">
+                                                                <td colspan="4">operation</td>
+                                                            </tr>
+                                                            <tr class="active lvl_0">
+                                                                <td>operation.operation_type</td>
+                                                                <td>Mandatory</td>
+                                                                <td>50</td>
+                                                                <td>Identifier of the operation. Values [ EMAIL_SEND ]</td>
+                                                            </tr>
+                                                            <tr class="success">
+                                                                <td colspan="4">email</td>
+                                                            </tr>
+                                                            <tr class="active lvl_0">
+                                                                <td>email.email_external_id</td>
+                                                                <td>Mandatory</td>
+                                                                <td>41</td>
+                                                                <td>Unique identifier of the email.</td>
+                                                            </tr>
+                                                            <tr class="active lvl_0">
+                                                                <td>email.application_external_id</td>
+                                                                <td>Mandatory</td>
+                                                                <td>41</td>
+                                                                <td>Unique identifier of the application.</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>                            </div>
+                                        <div class="tab-pane displayNone" id="email_send_response">
+                                            <div class="panel panel-default table-outer">
+                                                <div class="panel-heading">
+                                                    <h4>Response Fields</h4>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-condensed table-colls-4 ">
+                                                        <thead>
+                                                            <tr>
+                                                                <td><strong>Parameter</strong></td>
+                                                                <td><strong>Existence</strong></td>
+                                                                <td><strong>Length</strong></td>
+                                                                <td><strong>Description</strong></td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="success">
+                                                                <td colspan="4">operation</td>
+                                                            </tr>
+                                                            <tr class="active lvl_0">
+                                                                <td>operation.operation_type</td>
+                                                                <td>Always</td>
+                                                                <td>50</td>
+                                                                <td>Identifier of the operation. Values [ EMAIL_SEND ]</td>
+                                                            </tr>
+                                                            <tr class="success">
+                                                                <td colspan="4">email</td>
+                                                            </tr>
+                                                            <tr class="active lvl_0">
+                                                                <td>email.email_external_id</td>
+                                                                <td>Always</td>
+                                                                <td>41</td>
+                                                                <td>Unique identifier of the email.</td>
+                                                            </tr>
+                                                            <tr class="active lvl_0">
+                                                                <td>email.application_external_id</td>
+                                                                <td>Always</td>
+                                                                <td>41</td>
+                                                                <td>Unique identifier of the application.</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>                            </div>
+                                        <div class="tab-pane" id="email_send_error_response">
+                                            <div class="panel panel-default table-outer">
+                                                <div class="panel-heading">
+                                                    <h4>Error Response Fields</h4>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-condensed table-colls-4 ">
+                                                        <thead>
+                                                            <tr>
+                                                                <td><strong>Parameter</strong></td>
+                                                                <td><strong>Existence</strong></td>
+                                                                <td><strong>Length</strong></td>
+                                                                <td><strong>Description</strong></td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="success">
+                                                                <td colspan="4">operation</td>
+                                                            </tr>
+                                                            <tr class="active lvl_0">
+                                                                <td>operation.operation_type</td>
+                                                                <td>Always</td>
+                                                                <td>50</td>
+                                                                <td>Identifier of the operation. Values [ EMAIL_SEND ]</td>
+                                                            </tr>
+                                                            <tr class="success">
+                                                                <td colspan="4">opportunity</td>
+                                                            </tr>
+                                                            <tr class="active lvl_0">
+                                                                <td>opportunity.opportunity_external_id</td>
+                                                                <td>Always</td>
+                                                                <td>41</td>
+                                                                <td>Unique identifier of the opportunity.</td>
+                                                            </tr>
+                                                            <tr class="success">
+                                                                <td colspan="4">email</td>
+                                                            </tr>
+                                                            <tr class="active lvl_0">
+                                                                <td>email.email_external_id</td>
+                                                                <td>Always</td>
+                                                                <td>41</td>
+                                                                <td>Unique identifier of the email.</td>
+                                                            </tr>
+                                                            <tr class="active lvl_0">
+                                                                <td>email.application_external_id</td>
+                                                                <td>Always</td>
+                                                                <td>41</td>
+                                                                <td>Unique identifier of the application.</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>                            </div>
+                                        <div class="tab-pane" id="email_send_sample">
+                                            <h4>Request Sample</h4>
+                                            <pre>    
+{
+    "operation": {
+        "operation_type": "EMAIL_SEND",
+    },
+    "email": {
+        "email_external_id": "DOC6B-60B34-ECCA5-83DD2-F75A4-1942A-A0F41"
+        "application_external_id": "APL6B-60B34-ECCA5-47DE9-F75A4-1942A-90FE5"
+    }
+}
+                                            </pre>
+
+                                            <h4>Response Sample</h4>
+                                            <pre>    
+{
+    "result": "SUCCESS",
+    "operation": {
+        "operation_type": "EMAIL_SEND",
+    },
+    "email": {
+        "email_external_id": "DOC6B-60B34-ECCA5-83DD2-F75A4-1942A-A0F41"
+        "application_external_id": "APL6B-60B34-ECCA5-47DE9-F75A4-1942A-90FE5"
+    }
+}
+                                            </pre>
+
+                                            <h4>Error Response Sample</h4>
+                                            <pre>    
+{
+    "result": "ERROR",
+    "operation": {
+        "operation_type": "EMAIL_SEND",
+    },
+    "opportunity": {
+        "opportunity_type": "DOC6B-60B34-ECCA5-83DD2-F75A4-1942A-A0F41",
+    },
+    "email": {
+        "email_external_id": "DOC6B-60B34-ECCA5-83DD2-F75A4-1942A-A0F41"
+        "application_external_id": "APL6B-60B34-ECCA5-47DE9-F75A4-1942A-90FE5"
+    }
+} 
+                                            </pre>                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
